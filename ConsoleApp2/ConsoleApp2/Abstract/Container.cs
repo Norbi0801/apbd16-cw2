@@ -4,6 +4,7 @@ namespace ConsoleApp2.Abstract;
 
 public abstract class Container
 {
+    public static List<Container> ContainerList = new ();
     private protected double _weight;
     protected double Weight
     {
@@ -33,11 +34,8 @@ public abstract class Container
         Depth = depth;
         Sn = SerialNumber.Generate(containerType);
         MaxCapacity = maxCapacity;
-    }
-    
-    protected virtual char Ini()
-    {
-        throw new NotSupportedException();
+        
+        ContainerList.Add(this);
     }
 
 }

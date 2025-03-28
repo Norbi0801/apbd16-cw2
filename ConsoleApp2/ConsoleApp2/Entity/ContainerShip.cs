@@ -1,10 +1,10 @@
 ﻿using ConsoleApp2.Abstract;
-using ConsoleApp2.Interface;
 
 namespace ConsoleApp2.Entity;
 
 public class ContainerShip
 {
+    public static List<ContainerShip> ContainerShipList = new ();
     public List<Container> ContainerList { get; set; }
     public double Velocity { get; set; }
     public double MaxCountOfContainerList { get; set; }
@@ -16,6 +16,8 @@ public class ContainerShip
         MaxCountOfContainerList = maxCountOfContainerList;
         MaxWeight = maxWeight;
         ContainerList = new List<Container>();
+        
+        ContainerShipList.Add(this);
     }
     
     public Container Get(SerialNumber serialNumber)
