@@ -8,7 +8,7 @@ public class GasContainer: Container, IHazardNotifier, IHandlingCargo<Box<Gas>>
     private static double _coreOutWeightPercent = 0.95;
     public double Pressure { get; set; }
 
-    GasContainer(double weight, double height, double selfweight, double depth, double maxCapacity) : base(weight,
+    public GasContainer(double height, double selfweight, double depth, double maxCapacity) : base(
         height, selfweight, depth, maxCapacity, GetContainerType())
     {
     }

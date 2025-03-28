@@ -26,7 +26,7 @@ public class RefrigeratedContainer : Container, IHazardNotifier, IHandlingCargo<
             _product = value;
         }
     }
-    public RefrigeratedContainer(double weight, double height, double selfweight, double depth, double maxCapacity) : base(weight,
+    public RefrigeratedContainer(double height, double selfweight, double depth, double maxCapacity) : base(
         height, selfweight, depth, maxCapacity, GetContainerType())
     {
     }

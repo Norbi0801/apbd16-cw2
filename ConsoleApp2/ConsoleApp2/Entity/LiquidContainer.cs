@@ -49,7 +49,7 @@ public class LiquidContainer : Container, IHazardNotifier, IHandlingCargo<Box<Li
     private const double DangerLiquidThreshold = 0.9;
     private const double NormalLiquidThreshold = 0.5;
 
-    public LiquidContainer(double weight, double height, double selfweight, double depth, double maxCapacity) : base(weight,
+    public LiquidContainer(double height, double selfweight, double depth, double maxCapacity) : base(
         height, selfweight, depth, maxCapacity, GetContainerType())
     {
     }

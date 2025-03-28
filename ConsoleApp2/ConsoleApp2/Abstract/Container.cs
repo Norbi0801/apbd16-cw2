@@ -26,9 +26,9 @@ public abstract class Container
     public SerialNumber? Sn { get; set; }
     protected double MaxCapacity { get; set; }
 
-    protected Container(double weight, double height, double tareWeight, double depth, double maxCapacity, char containerType)
+    protected Container(double height, double tareWeight, double depth, double maxCapacity, char containerType)
     {
-        Weight = weight;
+        Weight = 0;
         Height = height;
         TareWeight  = tareWeight;
         Depth = depth;
@@ -38,4 +38,8 @@ public abstract class Container
         ContainerList.Add(this);
     }
 
+    public override string ToString()
+    {
+        return $"{Sn} ({Height}, {TareWeight}, {Depth})";
+    }
 }
