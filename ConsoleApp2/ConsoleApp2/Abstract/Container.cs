@@ -35,19 +35,6 @@ public abstract class Container
         Depth = depth;
         Sn = null;
     }
-
-    protected virtual double Unload()
-    {
-        double unloadWeight = Weight;
-        Weight = 0;
-
-        return unloadWeight;
-    }
-
-    public virtual void Load(double weight)
-    {
-        Weight += weight;
-    }
     
     
     protected virtual char GetContainerType()

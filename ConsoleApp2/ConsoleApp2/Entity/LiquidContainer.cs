@@ -5,7 +5,7 @@ using ConsoleApp2.Interface;
 
 namespace ConsoleApp2.Entity;
 
-public class LiquidContainer : Container, IHazardNotifier
+public class LiquidContainer : Container, IHazardNotifier, IHandlingCargo<Box<Liquid>>
 {
     protected new double Weight
     {
@@ -64,19 +64,19 @@ public class LiquidContainer : Container, IHazardNotifier
         Console.Error.WriteLine($"{Sn} have danger situation: {notification}");
     }
 
-    public void Load(Liquid liquid, double weight)
+    public Box<Liquid> Unload()
     {
-        Liquid = liquid;
-        base.Load(weight);
+        double unloadWeight = Weight;
+        Weight = 0;
+
+        return new Box<Liquid>(Liquid, unloadWeight);
     }
 
-    public override void Load(double weight)
+    public void Load(Box<Liquid> box)
     {
-        throw new NotSupportedException();
-    }
-
-    protected sealed override double Unload()
-    {
-        throw new NotSupportedException();
+        Liquid = box.Content;
+        Weight += box.Weight;
+        
+        box.Clear();
     }
 }

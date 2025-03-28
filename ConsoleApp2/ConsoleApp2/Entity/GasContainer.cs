@@ -1,10 +1,12 @@
 ﻿using ConsoleApp2.Abstract;
+using ConsoleApp2.Interface;
 
 namespace ConsoleApp2.Entity;
 
-public class GasContainer: Container
+public class GasContainer: Container, IHazardNotifier, IHandlingCargo<Box<Gas>>
 {
     private static double _coreOutWeightPercent = 0.95;
+    public double Pressure { get; set; }
     
     GasContainer(double weight, double height, double selfweight, double depth) : base(weight, height, selfweight, depth)
     {
@@ -16,12 +18,19 @@ public class GasContainer: Container
         return 'G';
     }
     
-    protected sealed override double Unload()
+    public Box<Gas> Unload()
     {
         double unloadWeight = Weight*_coreOutWeightPercent;
         Weight -= unloadWeight;
 
-        return unloadWeight;
+        return new Box<Gas>(unloadWeight);
+    }
+
+    public void Load(Box<Gas> box)
+    {
+        Weight += box.Weight;
+        
+        box.Clear();
     }
     
     public void HazardNotify(string? notification = null)
