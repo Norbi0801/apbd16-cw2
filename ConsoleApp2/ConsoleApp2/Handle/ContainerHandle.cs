@@ -1,7 +1,10 @@
-﻿namespace ConsoleApp2.Handle;
+﻿using ConsoleApp2.Abstract;
+
+namespace ConsoleApp2.Handle;
 
 public class ContainerHandle
 {
+    public static Container? Select;
     public static void Add()
     {
         
@@ -16,5 +19,16 @@ public class ContainerHandle
         double maxCargo = Convert.ToInt32(Console.ReadLine());
         
         // new Container(name, velocity, n, maxCargo);
+    }
+    
+    public static void SelectContainer()
+    {
+        Console.WriteLine("Podaj Sn ");
+        string? sn = Console.ReadLine();
+        var select = Container.ContainerList.Find((x)=>x.Sn.ToString() == sn);
+        if (select != null)
+        {
+            Select = select;
+        }
     }
 }

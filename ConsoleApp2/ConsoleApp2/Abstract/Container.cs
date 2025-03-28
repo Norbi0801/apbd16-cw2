@@ -23,7 +23,7 @@ public abstract class Container
     protected double TareWeight { get; set; }
     protected double Depth { get; set; }
 
-    public SerialNumber? Sn { get; set; }
+    public SerialNumber Sn { get; set; }
     protected double MaxCapacity { get; set; }
 
     protected Container(double height, double tareWeight, double depth, double maxCapacity, char containerType)

@@ -7,14 +7,14 @@ public class ContainerShip
     public static List<ContainerShip> ContainerShipList = new ();
     public List<Container> ContainerList { get; set; }
     
-    public string Name { get; set; }
+    public SerialNumber Sn { get; set; }
     public double Velocity { get; set; }
     public int MaxCountOfContainerList { get; set; }
     public double MaxWeight { get; set; }
 
-    public ContainerShip(string name,double velocity, int maxCountOfContainerList, double maxWeight)
+    public ContainerShip(double velocity, int maxCountOfContainerList, double maxWeight)
     {
-        Name = name;
+        Sn = SerialNumber.Generate('S', "SHP");
         Velocity = velocity;
         MaxCountOfContainerList = maxCountOfContainerList;
         MaxWeight = maxWeight;
@@ -42,9 +42,40 @@ public class ContainerShip
     {
         ContainerList.Add(some);
     }
+    
+    public void Put(List<Container> someList)
+    {
+        ContainerList.AddRange(someList);
+    }
+
+    public Container Replace(Container newContainer, SerialNumber replaceSerialNumber)
+    {
+        int? replaceContainerIndex = FindIndex(replaceSerialNumber);
+
+        if (replaceContainerIndex == null)
+        {
+            throw new NullReferenceException("Replace container not found");
+        }
+        
+        var replaceContainer = ContainerList[(int)replaceContainerIndex];
+        
+        ContainerList[(int)replaceContainerIndex] = newContainer;
+        
+        return replaceContainer;
+    }
 
     private Container? Find(SerialNumber serialNumber)
     {
         return ContainerList.Find((container) => container.Sn == serialNumber);
+    }
+    
+    private int? FindIndex(SerialNumber serialNumber)
+    {
+        return ContainerList.FindIndex((container) => container.Sn == serialNumber);
+    }
+
+    public override string ToString()
+    {
+        return $"{Sn} (velocity={Velocity}, maxCountOfContainers={MaxCountOfContainerList}, maxWeight={MaxWeight})";
     }
 }
