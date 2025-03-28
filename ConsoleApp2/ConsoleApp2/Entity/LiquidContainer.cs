@@ -74,4 +74,9 @@ public class LiquidContainer : Container, IHazardNotifier
     {
         throw new NotSupportedException();
     }
+
+    protected sealed override double Unload()
+    {
+        throw new NotSupportedException();
+    }
 }

@@ -5,7 +5,7 @@ public class SerialNumber
     private static List<SerialNumber> _serialNumbers = new();
     
     private string Prefix { get; set; }
-    // TODO: In future change type to class type
+    // TODO: In future change ContainerType to class
     private char ContainerType { get; set; }
     private int Id { get; set; }
 

@@ -38,9 +38,10 @@ public abstract class Container
 
     protected virtual double Unload()
     {
+        double unloadWeight = Weight;
         Weight = 0;
 
-        return Weight;
+        return unloadWeight;
     }
 
     public virtual void Load(double weight)
