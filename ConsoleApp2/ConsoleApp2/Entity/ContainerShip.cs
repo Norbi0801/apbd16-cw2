@@ -5,7 +5,7 @@ namespace ConsoleApp2.Entity;
 
 public class ContainerShip
 {
-    public List<Container?> ContainerList { get; set; }
+    public List<Container> ContainerList { get; set; }
     public double Velocity { get; set; }
     public double MaxCountOfContainerList { get; set; }
     public double MaxWeight { get; set; }
@@ -15,7 +15,7 @@ public class ContainerShip
         Velocity = velocity;
         MaxCountOfContainerList = maxCountOfContainerList;
         MaxWeight = maxWeight;
-        ContainerList = new List<Container?>();
+        ContainerList = new List<Container>();
     }
     
     public Container Get(SerialNumber serialNumber)
@@ -33,14 +33,13 @@ public class ContainerShip
     }
     
 
-    public void Put(Container? some)
+    public void Put(Container some)
     {
         ContainerList.Add(some);
-        some = null;
     }
 
     private Container? Find(SerialNumber serialNumber)
     {
-        return ContainerList.Find((container) => container != null && container.Sn == serialNumber);
+        return ContainerList.Find((container) => container.Sn == serialNumber);
     }
 }
