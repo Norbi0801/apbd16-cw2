@@ -11,13 +11,20 @@ public class SerialNumber
 
     private const string DefaultPrefix = "KON";
 
-    public SerialNumber(char containerType, string prefix = DefaultPrefix)
+    private SerialNumber(char containerType, string prefix = DefaultPrefix)
     {
         Prefix = prefix;
         ContainerType = containerType;
         Id = _serialNumbers.Count + 1;
         
-        _serialNumbers.Add(this);
+    }
+
+    public static SerialNumber Generate(char containerType, string prefix = DefaultPrefix)
+    {
+        var sn = new SerialNumber(containerType, prefix);
+        _serialNumbers.Add(sn);
+        
+        return sn;
     }
     
     public static bool Exists(int id)

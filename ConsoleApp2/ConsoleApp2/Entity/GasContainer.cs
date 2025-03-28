@@ -7,13 +7,13 @@ public class GasContainer: Container, IHazardNotifier, IHandlingCargo<Box<Gas>>
 {
     private static double _coreOutWeightPercent = 0.95;
     public double Pressure { get; set; }
-    
-    GasContainer(double weight, double height, double selfweight, double depth) : base(weight, height, selfweight, depth)
+
+    GasContainer(double weight, double height, double selfweight, double depth, double maxCapacity) : base(weight,
+        height, selfweight, depth, maxCapacity, GetContainerType())
     {
-        Sn = new SerialNumber(GetContainerType());
     }
 
-    protected sealed override char GetContainerType()
+    protected static char GetContainerType()
     {
         return 'G';
     }

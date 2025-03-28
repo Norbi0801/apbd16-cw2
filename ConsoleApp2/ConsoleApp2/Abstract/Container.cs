@@ -24,20 +24,18 @@ public abstract class Container
 
     protected SerialNumber? Sn { get; set; }
     protected double MaxCapacity { get; set; }
-    
-    private List<Container> Containers { get; set; } = new();
 
-    public Container(double weight, double height, double tareWeight, double depth)
+    protected Container(double weight, double height, double tareWeight, double depth, double maxCapacity, char containerType)
     {
         Weight = weight;
         Height = height;
-        TareWeight  = TareWeight;
+        TareWeight  = tareWeight;
         Depth = depth;
-        Sn = null;
+        Sn = SerialNumber.Generate(containerType);
+        MaxCapacity = maxCapacity;
     }
     
-    
-    protected virtual char GetContainerType()
+    protected virtual char Ini()
     {
         throw new NotSupportedException();
     }

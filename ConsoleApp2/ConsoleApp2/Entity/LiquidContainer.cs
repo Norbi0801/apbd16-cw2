@@ -49,12 +49,12 @@ public class LiquidContainer : Container, IHazardNotifier, IHandlingCargo<Box<Li
     private const double DangerLiquidThreshold = 0.9;
     private const double NormalLiquidThreshold = 0.5;
 
-    public LiquidContainer(double weight, double height, double selfWeight, double depth) : base(weight, height, selfWeight, depth)
+    public LiquidContainer(double weight, double height, double selfweight, double depth, double maxCapacity) : base(weight,
+        height, selfweight, depth, maxCapacity, GetContainerType())
     {
-        Sn = new SerialNumber(GetContainerType());
     }
 
-    protected sealed override char GetContainerType()
+    protected static char GetContainerType()
     {
         return 'L';
     }
