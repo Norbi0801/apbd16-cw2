@@ -2,12 +2,12 @@
 
 public class Command
 {
-    public char Key;
+    public string Key;
     public string Mnemonic;
     public Func<bool> OnCondition;
     public Action ToDo;
 
-    public Command(char key, string mnemonic, Func<bool> onCondition, Action todo)
+    public Command(string key, string mnemonic, Func<bool> onCondition, Action todo)
     {
         Key = key;
         Mnemonic = mnemonic;
